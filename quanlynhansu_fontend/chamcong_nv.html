@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chấm công</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/chamcong_nv.js" defer></script>
+</head>
+<body onload="requireNhanVien(); loadChamCongNV()">
+
+  <div class="sidebar">
+    <h2>👤 Nhân viên</h2>
+    <a href="dashboard_nv.html">🏠 Trang chủ</a>
+    <a href="profile_nv.html">🧾 Hồ sơ cá nhân</a>
+    <a href="chamcong_nv.html" class="active">🕒 Chấm công</a>
+    <a href="nghiphep_nv.html">📅 Xin nghỉ</a>
+    <a href="luong_nv.html">💰 Bảng lương</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <h2>🕒 Chấm công của bạn</h2>
+
+    <div class="btns">
+      <button onclick="checkIn()">✅ Chấm công vào</button>
+      <button onclick="checkOut()">🚪 Chấm công ra</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Ngày</th><th>Giờ vào</th><th>Giờ ra</th><th>Trạng thái</th></tr>
+      </thead>
+      <tbody id="tbody-cc"></tbody>
+    </table>
+  </div>
+</body>
+</html>

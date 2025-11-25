@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý lương</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/luong.js" defer></script>
+  <style>
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .msg.success { color: green; }
+    .msg.error { color: red; }
+    .msg.info { color: #555; }
+  </style>
+</head>
+<body onload="requireAdmin(); loadLuong();">
+  <div class="sidebar">
+    <h2>Quản lý NS</h2>
+    <a href="index.html">🏠 Dashboard</a>
+    <a href="nhanvien.html">👨‍💼 Nhân viên</a>
+    <a href="phongban.html">🏢 Phòng ban</a>
+    <a href="taikhoan.html">🔐 Tài khoản</a>
+    <a href="chamcong.html">🕒 Chấm công</a>
+    <a href="luong.html" class="active">💰 Lương</a>
+    <a href="nghiphep.html">📅 Nghỉ phép</a>
+    <a href="thongke.html">📊 Thống kê</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>Danh sách bảng lương</h2>
+      <div class="search-box">
+        <input id="searchInput" placeholder="🔍 Tìm theo ID nhân viên hoặc tháng..." oninput="searchLuong()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Nhân viên</th>
+            <th>Tháng</th>
+            <th>Lương cơ bản</th>
+            <th>Phụ cấp</th>
+            <th>Khấu trừ</th>
+            <th>Tổng lương</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-luong"></tbody>
+      </table>
+    </div>
+
+    <div class="form">
+      <h3>➕ Thêm / Sửa Bảng lương</h3>
+      <input id="nhanvien_id" placeholder="ID nhân viên" type="number">
+      <input id="thang" placeholder="Tháng (YYYY-MM)" type="month">
+      <input id="luong_co_ban" type="number" placeholder="Lương cơ bản">
+      <input id="phu_cap" type="number" placeholder="Phụ cấp">
+      <input id="khau_tru" type="number" placeholder="Khấu trừ">
+      <input id="tong_luong" type="number" placeholder="Tổng lương (tự tính)" readonly>
+      <button onclick="saveLuong()">💾 Lưu</button>
+      <p id="msg" class="msg"></p>
+    </div>
+  </div>
+</body>
+</html>

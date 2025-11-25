@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title>Đăng nhập - Quản lý nhân sự</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JS -->
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js" defer></script>
+</head>
+
+<body class="login-body" onload="clearOldCache()">
+  <div class="login-box">
+    <h2>Đăng nhập hệ thống</h2>
+    <input id="username" placeholder="Tên đăng nhập" autocomplete="off">
+    <input id="password" type="password" placeholder="Mật khẩu" autocomplete="off">
+    <button onclick="login()">Đăng nhập</button>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    // 🔥 Khi mở trang login, xóa toàn bộ dữ liệu cũ (cache, session, localStorage)
+    function clearOldCache() {
+      localStorage.clear();
+      sessionStorage.clear();
+      if ('caches' in window) {
+        caches.keys().then(names => names.forEach(name => caches.delete(name)));
+      }
+      console.log("🧹 Cache và localStorage đã được xóa sạch!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hồ sơ cá nhân</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile_nv.js" defer></script>
+</head>
+<body onload="requireNhanVien(); loadProfile()">
+
+  <div class="sidebar">
+    <h2>👤 Nhân viên</h2>
+    <a href="dashboard_nv.html">🏠 Trang chủ</a>
+    <a href="profile_nv.html" class="active">🧾 Hồ sơ cá nhân</a>
+    <a href="chamcong_nv.html">🕒 Chấm công</a>
+    <a href="nghiphep_nv.html">📅 Xin nghỉ</a>
+    <a href="luong_nv.html">💰 Bảng lương</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <h2>📋 Hồ sơ cá nhân</h2>
+    <form id="formProfile" onsubmit="updateProfile(event)">
+      <label>Tên nhân viên</label>
+      <input id="ten" required>
+
+      <label>Giới tính</label>
+      <select id="gioi_tinh">
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+
+      <label>Chức vụ</label>
+      <input id="chuc_vu">
+
+      <label>Phòng ban</label>
+      <input id="phong_ban">
+
+      <button type="submit">💾 Cập nhật</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+</body>
+</html>

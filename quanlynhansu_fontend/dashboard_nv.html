@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Nhân viên</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js"></script>
+  <script>
+    function loadUserInfo() {
+      requireNhanVien(); // Chỉ nhân viên mới vào được
+      const user = getUser();
+      document.getElementById("welcome").innerText = `Xin chào, ${user.username}!`;
+    }
+  </script>
+</head>
+<body onload="loadUserInfo()">
+
+  <div class="sidebar">
+    <h2>👤 Nhân viên</h2>
+    <a href="dashboard_nv.html" class="active">🏠 Trang chủ</a>
+    <a href="profile_nv.html">🧾 Hồ sơ cá nhân</a>
+    <a href="chamcong_nv.html">🕒 Chấm công</a>
+    <a href="nghiphep_nv.html">📅 Xin nghỉ</a>
+    <a href="luong_nv.html">💰 Bảng lương</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <h1 id="welcome">Xin chào!</h1>
+    <p>Chào mừng bạn đến hệ thống quản lý nhân sự.<br>
+      Tại đây bạn có thể:
+    </p>
+
+    <ul>
+      <li>📄 Cập nhật <b>hồ sơ cá nhân</b> của bạn</li>
+      <li>⏰ Thực hiện <b>chấm công</b> mỗi ngày</li>
+      <li>🌴 Gửi <b>đơn xin nghỉ phép</b> nhanh chóng</li>
+      <li>💵 Xem và <b>in bảng lương</b> hàng tháng</li>
+    </ul>
+
+    <p style="margin-top: 20px;">👉 Hãy chọn chức năng từ menu bên trái để bắt đầu.</p>
+  </div>
+</body>
+</html>

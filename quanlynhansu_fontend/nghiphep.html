@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>📅 Quản lý nghỉ phép</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/api.js"></script>
+  <script src="js/nghiphep.js" defer></script>
+
+  <style>
+    .msg { text-align: center; margin-top: 10px; font-weight: 600; transition: 0.3s; }
+    .msg.success { color: green; }
+    .msg.error { color: red; }
+    .msg.info { color: #555; }
+  </style>
+</head>
+<body onload="requireAdmin(); loadNghiPhep();">
+  <div class="sidebar">
+    <h2>📊 Quản lý NS</h2>
+    <a href="index.html">🏠 Dashboard</a>
+    <a href="nhanvien.html">👨‍💼 Nhân viên</a>
+    <a href="phongban.html">🏢 Phòng ban</a>
+    <a href="taikhoan.html">🔐 Tài khoản</a>
+    <a href="chamcong.html">🕒 Chấm công</a>
+    <a href="luong.html">💰 Lương</a>
+    <a href="nghiphep.html" class="active">📅 Nghỉ phép</a>
+    <a href="thongke.html">📊 Thống kê</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>Danh sách đơn nghỉ phép</h2>
+      <div class="search-box">
+        <input id="searchInput" placeholder="🔍 Tìm theo ID nhân viên hoặc trạng thái..." oninput="searchNghiPhep()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Nhân viên</th>
+            <th>Từ ngày</th>
+            <th>Đến ngày</th>
+            <th>Lý do</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-np"></tbody>
+      </table>
+    </div>
+
+    <div class="form">
+      <h3>➕ Gửi đơn nghỉ phép</h3>
+      <input id="nhanvien_id" placeholder="ID nhân viên" type="number">
+      <input id="tu_ngay" type="date">
+      <input id="den_ngay" type="date">
+      <input id="ly_do" placeholder="Lý do nghỉ">
+      <select id="trang_thai">
+        <option value="Chờ duyệt">Chờ duyệt</option>
+        <option value="Đã duyệt">Đã duyệt</option>
+        <option value="Từ chối">Từ chối</option>
+      </select>
+      <button onclick="saveNghiPhep()">💾 Gửi đơn</button>
+      <p id="msg" class="msg"></p>
+    </div>
+  </div>
+</body>
+</html>

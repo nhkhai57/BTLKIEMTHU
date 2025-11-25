@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xin nghỉ phép</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nghiphep_nv.js" defer></script>
+</head>
+<body onload="requireNhanVien(); loadNghiPhepNV()">
+
+  <div class="sidebar">
+    <h2>👤 Nhân viên</h2>
+    <a href="dashboard_nv.html">🏠 Trang chủ</a>
+    <a href="profile_nv.html">🧾 Hồ sơ cá nhân</a>
+    <a href="chamcong_nv.html">🕒 Chấm công</a>
+    <a href="nghiphep_nv.html" class="active">📅 Xin nghỉ phép</a>
+    <a href="luong_nv.html">💰 Bảng lương</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <h2>📅 Đơn nghỉ phép của bạn</h2>
+
+    <form onsubmit="addNghiPhepNV(event)">
+      <input id="tu_ngay" type="date" required>
+      <input id="den_ngay" type="date" required>
+      <input id="ly_do" placeholder="Lý do nghỉ" required>
+      <button>Gửi đơn</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Từ ngày</th>
+          <th>Đến ngày</th>
+          <th>Lý do</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-np"></tbody>
+    </table>
+  </div>
+
+</body>
+</html>

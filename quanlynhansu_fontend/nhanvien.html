@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Nhân viên - Quản lý Nhân sự</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nhanvien.js" defer></script>
+  <style>
+    .msg {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .msg.success { color: green; }
+    .msg.error { color: red; }
+  </style>
+</head>
+<body onload="requireAdmin(); loadNhanVien();">
+  <div class="sidebar">
+    <h2>Quản Lý NS</h2>
+    <a href="index.html">📊 Dashboard</a>
+    <a href="nhanvien.html" class="active">👨‍💼 Nhân viên</a>
+    <a href="phongban.html">🏢 Phòng ban</a>
+    <a href="taikhoan.html">🧾 Tài khoản</a>
+    <a href="chamcong.html">🕒 Chấm công</a>
+    <a href="luong.html">💰 Lương</a>
+    <a href="nghiphep.html">🌴 Nghỉ phép</a>
+    <a href="thongke.html">📊 Thống kê</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>👨‍💼 Danh sách nhân viên</h2>
+      <div class="search-box">
+        <input id="searchInput" placeholder="🔍 Tìm theo tên hoặc chức vụ..." oninput="searchNhanVien()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table id="nhanvienTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Giới tính</th>
+            <th>Chức vụ</th>
+            <th>Phòng ban</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="form">
+      <h3>➕ Thêm / Sửa Nhân viên</h3>
+      <input id="tenNV" placeholder="Tên nhân viên">
+      <select id="gioitinh">
+        <option value="">-- Chọn giới tính --</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+      <input id="chucvu" placeholder="Chức vụ">
+      <input id="phongban" placeholder="ID phòng ban">
+      <button onclick="saveNhanVien()">💾 Lưu</button>
+      <p id="msg" class="msg"></p>
+    </div>
+  </div>
+</body>
+</html>

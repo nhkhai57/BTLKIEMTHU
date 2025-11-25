@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý tài khoản</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/taikhoan.js" defer></script>
+  <style>
+    .msg {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .msg.success { color: green; }
+    .msg.error { color: red; }
+    .msg.info { color: #555; }
+  </style>
+</head>
+<body onload="requireAdmin(); loadTaiKhoan();">
+  <div class="sidebar">
+    <h2>Quản Lý NS</h2>
+    <a href="index.html">🏠 Dashboard</a>
+    <a href="nhanvien.html">👨‍💼 Nhân viên</a>
+    <a href="phongban.html">🏢 Phòng ban</a>
+    <a href="taikhoan.html" class="active">🔐 Tài khoản</a>
+    <a href="chamcong.html">🕒 Chấm công</a>
+    <a href="luong.html">💰 Lương</a>
+    <a href="nghiphep.html">📅 Nghỉ phép</a>
+    <a href="thongke.html">📊 Thống kê</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>Danh sách tài khoản</h2>
+      <div class="search-box">
+        <input id="searchInput" placeholder="🔍 Tìm theo tên đăng nhập..." oninput="searchTaiKhoan()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table id="tableTK">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Mật khẩu</th>
+            <th>Vai trò</th>
+            <th>Mã nhân viên</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-tk"></tbody>
+      </table>
+    </div>
+
+    <div class="form">
+      <h3>➕ Thêm / Sửa Tài khoản</h3>
+      <input id="username" placeholder="Tên đăng nhập">
+      <input id="password" type="password" placeholder="Mật khẩu">
+      <select id="role">
+        <option value="">-- Chọn vai trò --</option>
+        <option value="admin">Admin</option>
+        <option value="nhanvien">Nhân viên</option>
+      </select>
+      <input id="nhanvien_id" type="number" placeholder="ID nhân viên">
+      <button onclick="saveTaiKhoan()">💾 Lưu</button>
+      <p id="msg" class="msg"></p>
+    </div>
+  </div>
+</body>
+</html>

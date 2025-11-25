@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý chấm công</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/chamcong.js" defer></script>
+  <style>
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .msg.success { color: green; }
+    .msg.error { color: red; }
+    .msg.info { color: #555; }
+  </style>
+</head>
+<body onload="requireAdmin(); loadChamCong();">
+  <div class="sidebar">
+    <h2>Quản Lý NS</h2>
+    <a href="index.html">🏠 Dashboard</a>
+    <a href="nhanvien.html">👨‍💼 Nhân viên</a>
+    <a href="phongban.html">🏢 Phòng ban</a>
+    <a href="taikhoan.html">🔐 Tài khoản</a>
+    <a href="chamcong.html" class="active">🕒 Chấm công</a>
+    <a href="luong.html">💰 Lương</a>
+    <a href="nghiphep.html">📅 Nghỉ phép</a>
+    <a href="thongke.html">📊 Thống kê</a>
+    <a href="#" onclick="logout()">🚪 Đăng xuất</a>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h2>Danh sách chấm công</h2>
+      <div class="search-box">
+        <input id="searchInput" placeholder="🔍 Tìm theo ID nhân viên hoặc ngày..." oninput="searchChamCong()">
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table id="table-cc">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Nhân viên</th>
+            <th>Ngày</th>
+            <th>Giờ vào</th>
+            <th>Giờ ra</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-cc"></tbody>
+      </table>
+    </div>
+
+    <div class="form">
+      <h3>➕ Thêm / Sửa Chấm công</h3>
+      <input id="nhanvien_id" placeholder="ID nhân viên" type="number">
+      <input id="ngay" type="date">
+      <input id="gio_vao" type="time">
+      <input id="gio_ra" type="time">
+      <input id="trang_thai" placeholder="Trạng thái (VD: Đúng giờ, Muộn)">
+      <button onclick="saveChamCong()">💾 Lưu</button>
+      <p id="msg" class="msg"></p>
+    </div>
+  </div>
+</body>
+</html>
